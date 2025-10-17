@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Scuola.api.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 var strConn = builder.Configuration.GetConnectionString("ConnezioneLaDbScula")
     ?? throw new InvalidOperationException("Connection string 'ConnezioneLaDbScula' not found.");
-builder.Services.AddDbContext<ScuolaDbContext>(options =>
-    options.UseSqlServer(strConn));
+//builder.Services.AddDbContext<ScuolaDbContext>(options =>
+//    options.UseSqlServer(strConn));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
