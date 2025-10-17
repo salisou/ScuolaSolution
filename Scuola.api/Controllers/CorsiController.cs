@@ -37,7 +37,7 @@ namespace Scuola.api.Controllers
 
         // GET: api/Corsi/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Corsi>> GetCorsi(int id)
+        public async Task<ActionResult<Corsi>> GetCorsoById(int id)
         {
             var corsi = await _context.Corsis.FindAsync(id);
 

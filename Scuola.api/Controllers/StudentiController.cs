@@ -46,7 +46,7 @@ namespace Scuola.api.Controllers
                 return NotFound("Nessuno studente trovato nel db.");
             }
 
-            return Ok(studenti);
+            return Ok(studenti); // Rispondi con 200 OK e la lista degli studenti
         }
 
         // GET: api/Studenti/5
@@ -55,7 +55,7 @@ namespace Scuola.api.Controllers
         {
             Studenti? studente = await _context.Studentis.FindAsync(id);
 
-            if (studente == null)
+            if (studente is null)
             {
                 return NotFound();
             }
@@ -110,7 +110,7 @@ namespace Scuola.api.Controllers
         public async Task<IActionResult> DeleteStudente(int id)
         {
             Studenti? studente = await _context.Studentis.FindAsync(id);
-            if (studente == null)
+            if (studente is null)
             {
                 return NotFound();
             }
@@ -121,9 +121,6 @@ namespace Scuola.api.Controllers
             return NoContent();
         }
 
-        private async Task<bool> StudentiExists(int id)
-        {
-            return await _context.Studentis.AnyAsync(e => e.Id == id);
-        }
+        private async Task<bool> StudentiExists(int id) => await _context.Studentis.AnyAsync(e => e.Id == id);
     }
 }
